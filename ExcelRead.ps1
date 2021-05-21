@@ -3,7 +3,7 @@
 $folder = "D:\"
 $Filename = "bla"
 
-$file = Get-ChildItem -Path "D:\" | Where-Object name -Like $($Filename).xlsx
+$file = Get-ChildItem -Path "D:\" | Where-Object name -Like "$($Filename).xlsx"
 $Path = $file.fullname
 
 #öffnen der Excel
