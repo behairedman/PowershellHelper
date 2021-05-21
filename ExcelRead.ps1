@@ -14,8 +14,8 @@ $Datensatz = [PSCustomObject]@{}
 $headerRow = 1   #Zeile mit Attributnamen
 $row = 2 #erste Datenzeile
 $column = 1 #Startspalte
-$rowrange = 6 #Letzte Zeile
-$columnrange = 4 #Letzte Spalte
+$rowrange = 6 #Letzte Zeile + 1
+$columnrange = 4 #Letzte Spalte + 1
 
 #befüllen der Datensatzliste
 while($row -lt $rowrange)
