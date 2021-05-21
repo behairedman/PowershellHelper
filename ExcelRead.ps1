@@ -1,11 +1,16 @@
 ﻿
-#Datei und Pfad angeben
-$Path = "D:\Uebungs1.xlsx"
-$Sheet = "Sheet1"
+#Datei und Pfad angeben - static
+$folder = "D:\"
+$Filename = "bla"
+
+$file = Get-ChildItem -Path "D:\" | Where-Object name -Like $($Filename).xlsx
+$Path = $file.fullname
 
 #öffnen der Excel
 $objExcel = New-Object -ComObject Excel.Application
 $WorkBook = $objExcel.Workbooks.Open($Path)
+$Sheet = $WorkBook.Worksheets | where index -EQ 1
+$Sheet = $Sheet.name
 $WorkSheet = $WorkBook.sheets.item($Sheet)
 
 #Erstellen des Datensatzobjekts und DatenListe
@@ -39,7 +44,7 @@ Stop-Process -Name EXCEL
 
 #ausgabe als CSV
 
-$CSVPath = "D:\Output.csv"
+$CSVPath = "$($folder)\Output.csv"
 foreach($_ in $DatensatzListe)
 {
     Export-Csv -InputObject $_ -Path $CSVPath -Append -NoTypeInformation
