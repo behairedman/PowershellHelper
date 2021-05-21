@@ -35,4 +35,14 @@ while($row -lt $rowrange)
 }
 
 Stop-Process -Name EXCEL
+
+
+#ausgabe als CSV
+
+$CSVPath = "D:\Output.csv"
+foreach($_ in $DatensatzListe)
+{
+    Export-Csv -InputObject $_ -Path $CSVPath -Append -NoTypeInformation
+}
+
 #END
